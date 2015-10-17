@@ -4,7 +4,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of theSoftware, and to permit persons to whom the Software is
+copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
@@ -17,8 +17,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 
 // ==UserScript==
-// @name AposFeedingBot
-// @namespace AposFeedingBot
+// @name EnderBot
+// @namespace EnderBot
 // @include http://agar.io/*
 // @version 3.71
 // @grant none
@@ -26,7 +26,7 @@ SOFTWARE.*/
 // @require http://www.parsecdn.com/js/parse-1.5.0.min.js
 // ==/UserScript==
 
-var aposFeedingBotVersion = 3.71;
+var EnderBotVersion = 3.71;
 
 //TODO: Team mode
 // Detect when people are merging
@@ -46,7 +46,7 @@ Array.prototype.peek = function() {
 var sha = "efde0488cc2cc176db48dd23b28a20b90314352b";
 function getLatestCommit() {
     window.jQuery.ajax({
- url: "https://api.github.com/repos/apostolique/AposFeedingBot/git/refs/heads/master",
+ url: "https://api.github.com/repos/apostolique/EnderBot/git/refs/heads/master",
  cache: false,
  dataType: "jsonp"
  }).done(function(data) {
@@ -66,18 +66,18 @@ function getLatestCommit() {
                 window.jQuery("#" + prefix + "Dialog").show();
             }
 
- $.get('https://raw.githubusercontent.com/Apostolique/AposFeedingBot/master/AposFeedingBot.user.js?' + Math.floor((Math.random() * 1000000) + 1), function(data) {
+ $.get('https://raw.githubusercontent.com/Apostolique/EnderBot/master/EnderBot.user.js?' + Math.floor((Math.random() * 1000000) + 1), function(data) {
                 var latestVersion = data.replace(/(\r\n|\n|\r)/gm,"");
  latestVersion = latestVersion.substring(latestVersion.indexOf("// @version")+11,latestVersion.indexOf("// @grant"));
 
  latestVersion = parseFloat(latestVersion + 0.0000);
-                var myVersion = parseFloat(aposFeedingBotVersion + 0.0000); 
+                var myVersion = parseFloat(EnderBotVersion + 0.0000); 
                 
                 if(latestVersion > myVersion)
                 {
- update("aposFeedingBot", "AposFeedingBot.user.js", "https://github.com/Apostolique/AposFeedingBot/blob/" + sha + "/AposFeedingBot.user.js/");
+ update("EnderBot", "EnderBot.user.js", "https://github.com/Apostolique/EnderBot/blob/" + sha + "/EnderBot.user.js/");
                 }
-                console.log('Current AposFeedingBot.user.js Version: ' + myVersion + " on Github: " + latestVersion);
+                console.log('Current EnderBot.user.js Version: ' + myVersion + " on Github: " + latestVersion);
             });
 
  }).fail(function() {});
@@ -108,7 +108,7 @@ window.botList.push(new QuickBot());*/
 
 
 function AposBot() {
-    this.name = "AposFeedingBot " + aposFeedingBotVersion;
+    this.name = "EnderBot " + EnderBotVersion;
 
     this.lastMasterUpdate = Date.now();
     this.MasterLocation = Parse.Object.extend("MasterLocation");
