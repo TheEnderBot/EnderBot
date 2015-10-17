@@ -19,13 +19,13 @@ L===-L-L-L==-L---L-L-L-L-L-L==-L===-L-
 // @name EnderBot
 // @namespace EnderBot
 // @include http://agar.io/*
-// @version 1.0
+// @version 1.3
 // @grant none
 // @author EnderBel Skype:Ytrioq
 // @require http://www.parsecdn.com/js/parse-1.5.0.min.js
 // ==/UserScript==
 
-var EnderBotVersion = 1.0;
+var EnderBotVersion = 1.3;
 
 //TODO: Team mode
 // Detect when people are merging
@@ -45,7 +45,7 @@ Array.prototype.peek = function() {
 var sha = "efde0488cc2cc176db48dd23b28a20b90314352b";
 function getLatestCommit() {
     window.jQuery.ajax({
- url: "https://api.github.com/repos/apostolique/EnderBot/git/refs/heads/master",
+ url: "https://api.github.com/repos/EnderBel/EnderBot/git/refs/heads/master",
  cache: false,
  dataType: "jsonp"
  }).done(function(data) {
@@ -56,8 +56,8 @@ function getLatestCommit() {
             function update(prefix, name, url) {
                 window.jQuery(document.body).prepend("<div id='" + prefix + "Dialog' style='position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 100; display: none;'>");
                 window.jQuery('#' + prefix + 'Dialog').append("<div id='" + prefix + "Message' style='width: 350px; background-color: #FFFFFF; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;'>");
-                window.jQuery('#' + prefix + 'Message').append("<h2>UPDATE TIME!!!</h2>");
-                window.jQuery('#' + prefix + 'Message').append("<p>Grab the update for: <a id='" + prefix + "Link' href='" + url + "' target=\"_blank\">" + name + "</a></p>");
+                window.jQuery('#' + prefix + 'Message').append("<h2>Вышло обновление!!!</h2>");
+                window.jQuery('#' + prefix + 'Message').append("<p>Скачайте обновление: <a id='" + prefix + "Link' href='" + url + "' target=\"_blank\">" + name + "</a></p>");
                 window.jQuery('#' + prefix + 'Link').on('click', function() {
                     window.jQuery("#" + prefix + "Dialog").hide();
                     window.jQuery("#" + prefix + "Dialog").remove();
@@ -65,7 +65,7 @@ function getLatestCommit() {
                 window.jQuery("#" + prefix + "Dialog").show();
             }
 
- $.get('https://raw.githubusercontent.com/Apostolique/EnderBot/master/EnderBot.user.js?' + Math.floor((Math.random() * 1000000) + 1), function(data) {
+ $.get('https://raw.githubusercontent.com/EnderBel/EnderBot/master/EnderBot.user.js?' + Math.floor((Math.random() * 1000000) + 1), function(data) {
                 var latestVersion = data.replace(/(\r\n|\n|\r)/gm,"");
  latestVersion = latestVersion.substring(latestVersion.indexOf("// @version")+11,latestVersion.indexOf("// @grant"));
 
@@ -74,7 +74,7 @@ function getLatestCommit() {
                 
                 if(latestVersion > myVersion)
                 {
- update("EnderBot", "EnderBot.user.js", "https://github.com/Apostolique/EnderBot/blob/" + sha + "/EnderBot.user.js/");
+ update("EnderBot", "EnderBot.user.js", "https://github.com/EnderBel/EnderBot/blob/" + sha + "/EnderBot.user.js/");
                 }
                 console.log('Current EnderBot.user.js Version: ' + myVersion + " on Github: " + latestVersion);
             });
@@ -83,14 +83,14 @@ function getLatestCommit() {
 }
 getLatestCommit();
 
-console.log("Running Apos Feeding Bot!");
+console.log("Running EnderBel bot");
 
 var f = window;
 var g = window.jQuery;
 
 Parse.initialize("nj3ycKuqW4k4CnzN1ZYtMYowoa97qNw7NafLimrF", "nh6arPQQxbE5rFOyR0dCgecQiDAN54Zgjsf7eAKH");
 
-console.log("Apos Feeding Bot!");
+console.log("EnderBel bot!");
 
 window.botList = window.botList || [];
 
@@ -106,7 +106,7 @@ window.botList = window.botList || [];
 window.botList.push(new QuickBot());*/
 
 
-function AposBot() {
+function EnderBot() {
     this.name = "EnderBot " + EnderBotVersion;
 
     this.lastMasterUpdate = Date.now();
@@ -1275,6 +1275,6 @@ function AposBot() {
         }
     };
 };
-window.botList.push(new AposBot());
+window.botList.push(new EnderBot());
 
 window.updateBotList(); //This function might not exist yet.
