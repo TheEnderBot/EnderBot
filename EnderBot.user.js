@@ -20,13 +20,13 @@ SOFTWARE.*/
 // @name EnderBot
 // @namespace EnderBot
 // @include http://agar.io/*
-// @version 3.71
+// @version 1.0
 // @grant none
 // @author http://www.twitch.tv/apostolique
 // @require http://www.parsecdn.com/js/parse-1.5.0.min.js
 // ==/UserScript==
 
-var EnderBotVersion = 3.71;
+var EnderBotVersion = 1.0;
 
 //TODO: Team mode
 // Detect when people are merging
